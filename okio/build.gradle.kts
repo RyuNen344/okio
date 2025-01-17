@@ -151,6 +151,9 @@ kotlin {
               }
               createSourceSet("appleMain", parent = unixMain, children = appleTargets)
             }
+          createSourceSet("androidNativeMain", parent = nativeMain, children = androidNativeTargets).also { androidNativeMain ->
+            androidNativeMain.dependsOn(nonAppleMain)
+          }
         }
 
       createSourceSet("nativeTest", parent = commonTest, children = mingwTargets + linuxTargets)
@@ -159,6 +162,7 @@ kotlin {
           nativeTest.dependsOn(nonWasmTest)
           nativeTest.dependsOn(zlibTest)
           createSourceSet("appleTest", parent = nativeTest, children = appleTargets)
+          createSourceSet("androidNativeTest", parent = nativeTest, children = androidNativeTargets)
         }
     }
 

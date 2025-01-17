@@ -39,6 +39,10 @@ fun KotlinMultiplatformExtension.configureOrCreateOkioPlatforms() {
 }
 
 fun KotlinMultiplatformExtension.configureOrCreateNativePlatforms() {
+  androidNativeArm32()
+  androidNativeArm64()
+  androidNativeX86()
+  androidNativeX64()
   iosX64()
   iosArm64()
   iosSimulatorArm64()
@@ -57,6 +61,13 @@ fun KotlinMultiplatformExtension.configureOrCreateNativePlatforms() {
   macosArm64()
   mingwX64()
 }
+
+val androidNativeTargets = listOf(
+  "androidNativeArm32",
+  "androidNativeArm64",
+  "androidNativeX86",
+  "androidNativeX64",
+)
 
 val appleTargets = listOf(
   "iosArm64",
